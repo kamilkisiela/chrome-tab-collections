@@ -1,0 +1,16 @@
+{
+  "name": "tabcollections",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-mocks": "~1.4.5",
+    "angular-animate": "~1.4.5",
+    "angular-aria": "~1.4.5",
+    "angular-messages": "~1.4.5",
+    "angular-material": "~0.11.0"
+  },
+  "devDependencies": {
+    "chai": "~3.2.0",
+    "mocha": "~2.3.2"
+  }
+}

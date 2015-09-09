@@ -1,0 +1,87 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/popup.css -->
+    <link href="styles/popup.css" rel="stylesheet">
+    <!-- endbuild -->
+</head>
+<body>
+<div id="root" ng-controller="MainCtrl">
+    <md-toolbar ng-controller="NavCtrl">
+        <div class="md-toolbar-tools">
+            <h2>
+                {{current.name}}
+            </h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="{{button.name}}" ng-click="toggle(button.id)"
+                       style="line-height: 34px;">
+                <md-icon md-svg-icon="{{button.icon}}" class="s24" arial-label="{{button.name}}"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <ng-switch on="state.id">
+        <md-content ng-switch-default style="max-height: 370px;">
+            <md-list ng-controller="ListCtrl">
+                <md-list-item class="md-2-line" ng-repeat="package in packages" ng-click="edit(package)">
+                    <div class="md-list-item-text">
+                        <h3> {{ package.name }} </h3>
+
+                        <p> asd, dsa, ddd </p>
+                    </div>
+                    <md-button class="md-icon-button" aria-label="Edit">
+                        <md-icon md-svg-icon="edit" class="s24" aria-label="Cake"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Delete">
+                        <md-icon md-svg-icon="delete" class="s24" aria-label="Cake"></md-icon>
+                    </md-button>
+                </md-list-item>
+            </md-list>
+        </md-content>
+        <md-content ng-switch-when="add" layout-padding>
+            <div ng-controller="AddCtrl">
+                <form name="collectionForm">
+                    <md-input-container>
+                        <label>Name</label>
+                        <input md-maxlength="20" minlength="3" required name="name" ng-model="collection.name">
+
+                        <div ng-messages="collectionForm.name.$error" ng-show="collectionForm.name.$dirty">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">Has to be less than 20 characters long.</div>
+                            <div ng-message="minlength">Has to be at least 3 characters long.</div>
+                        </div>
+                    </md-input-container>
+                </form>
+            </div>
+        </md-content>
+        <md-content ng-switch-when="edit">
+            <div ng-controller="EditCtrl">
+                {{data|json}}
+            </div>
+        </md-content>
+    </ng-switch>
+</div>
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/popup.js -->
+<script src="scripts/modules/storage.js"></script>
+<script src="scripts/modules/collections.js"></script>
+<script src="scripts/modules/states.js"></script>
+<script src="scripts/app.js"></script>
+<!-- endbuild -->
+</body>
+</html>

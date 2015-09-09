@@ -1,0 +1,33 @@
+html, body {
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    min-width: 300px;
+    min-height: 200px;
+}
+
+md-list-item .md-button.md-icon-button {
+    display: none;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+}
+
+md-list-item:hover .md-button.md-icon-button {
+    display: block;
+}
+
+md-list-item:hover .md-button.md-icon-button md-icon {
+    color: #c0c0c0;
+}
+
+md-list-item .md-button.md-icon-button:hover md-icon {
+    color: #555;
+}
